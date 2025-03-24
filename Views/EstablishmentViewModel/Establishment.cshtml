@@ -1,0 +1,118 @@
+﻿@using _876Access.ViewModels
+@model EstablishmentViewModel
+@{
+    ViewBag.Title = "Add Establishment";
+}
+
+<form enctype="multipart/form-data" asp-controller="Establishments" asp-action="create"
+      method="post" class="mt-3">
+    <div class="form-group row">
+        <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Name" class="form-control" placeholder="Name">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Email" class="form-control" placeholder="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="TeleNum" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="TeleNum" class="form-control" placeholder="Telephone">
+            <span asp-validation-for="TeleNum" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="CellNum" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="CellNum" class="form-control" placeholder="Cellphone">
+            <span asp-validation-for="CellNum" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="Website" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Website" class="form-control" placeholder="Website">
+            <span asp-validation-for="Website" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="Parish" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Parish" class="form-control" placeholder="Parish">
+            <span asp-validation-for="Parish" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="Address" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Address" class="form-control" placeholder="Address">
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="OpenHours" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="OpenHours" class="form-control" placeholder="OpenHours">
+            <span asp-validation-for="OpenHours" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="CloseHours" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="CloseHours" class="form-control" placeholder="CloseHours">
+            <span asp-validation-for="CloseHours" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Description" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Description" class="form-control" placeholder="Description">
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+    @*  asp-for tag helper is set to "Photo" property. "Photo" property type is IFormFile
+    so at runtime asp.net core generates file upload control (input type=file)
+    *@
+
+    <div class="form-group row">
+        <label asp-for="Photo" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <div class="custom-file">
+                <input asp-for="Photo" class="form-control custom-file-input">
+                <label class="custom-file-label">Choose File...</label>
+            </div>
+        </div>
+    </div>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </div>
+
+    @*This script is required to display the selected file in the file upload element*@
+
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(fileName);
+                });
+            });
+        </script>
+    }
+</form>

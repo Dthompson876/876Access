@@ -1,0 +1,118 @@
+﻿@model _876Access.Models.Establishments
+
+@{
+    ViewData["Title"] = "876Access";
+}
+
+<h1>Add New</h1>
+
+<h4>Establishments</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeleNum" class="control-label"></label>
+                <input asp-for="TeleNum" class="form-control" />
+                <span asp-validation-for="TeleNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CellNum" class="control-label"></label>
+                <input asp-for="CellNum" class="form-control" />
+                <span asp-validation-for="CellNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Website" class="control-label"></label>
+                <input asp-for="Website" class="form-control" />
+                <span asp-validation-for="Website" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Parish" class="control-label"></label>
+                <select id="drpEmpList" size="1" class="form-control" asp-for="Parish">
+                    <option value="">--Select--</option>
+                    <option value="Manchester">Manchester</option>
+                    <option value="Kingston">Kingston</option>
+                    <option value="Clarendon">Clarendon</option>
+                    <option value="St.Catherine">St.Catherine</option>
+                    <option value="St.Thomas">St.Thomas</option>
+                    <option value="PortLand">PortLand</option>
+                    <option value="Hanover">Hanover</option>
+                    <option value="WestmoreLand">Westmoreland</option>
+                    <option value="St.Mary">St.Mary</option>
+                    <option value="St.Ann">St.Ann</option>
+                    <option value="St.Elizabeth">St.Elizabeth</option>
+                    <option value="Trelawny">Trelawny</option>
+                    <option value="St.Andrew">St.Andrew</option>
+                    <option value="St.James">St.James</option>
+
+
+                </select>
+                <span asp-validation-for="Parish" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OpenHours" class="control-label"></label>
+                <input type="time" asp-for="OpenHours" class="form-control" />
+                <span asp-validation-for="OpenHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CloseHours" class="control-label"></label>
+                <input type="time" asp-for="CloseHours" class="form-control" />
+                <span asp-validation-for="CloseHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" class="form-control" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group row">
+                <label asp-for="ImageFile" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <div class="custom-file">
+                        <input asp-for="ImageFile" class="form-control custom-file-input" onchange="document.getElementById('FrontImagePrv').src= window.URL.createObjectURL(this.files[0])">
+                        
+                        <label class="custom-file-label">Choose File...</label>
+                    </div>
+                </div>
+            </div>
+
+            <img id="FrontImagePrv" src="" alt="Empty" width="150"
+                height="150" style="border:1px;margin-top:20px; margin-left:120px;"/>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<br />
+<br />
+<br />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
